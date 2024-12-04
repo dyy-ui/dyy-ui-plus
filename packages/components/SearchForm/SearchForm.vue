@@ -1,5 +1,5 @@
 <template>
-  <div>1</div>
+  <div class="box">大家好</div>
 </template>
 
 <script setup lang="ts">
@@ -8,6 +8,6 @@
   })
 </script>
 
-<style lang="" scoped>
-  
+<style scoped>
+  @import "./style.css";
 </style>
