@@ -1,10 +1,37 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
+const onSubmit = (data:any) => {
+  ElMessage({
+    message: JSON.stringify(data),
+    grouping: true,
+    type: 'success',
+  })
+  console.log(JSON.stringify(data))
+}
+
+const itemList = ref([
+  {
+    label: '姓名',
+    prop: 'name',
+    type: 'input',
+    attrs: { clearable: true, placeholder: '请输入姓名' },
+    value: '',
+  },
+  {
+    label: 'InputSlot',
+    prop: 'InputSlot',
+    type: 'input',
+    attrs: { clearable: true, placeholder: '请输入姓名', slots: ['prefix', 'suffix'] },
+    value: '',
+  },
+])
 </script>
 
 <template>
   <div>
-    <lx-search-form></lx-search-form>
-
+    <el-button type="primary" @click="onSubmit">提交</el-button>
+    <lx-search-form :item-list="itemList" @handleSubmit="onSubmit"></lx-search-form>
   </div>
 </template>
 

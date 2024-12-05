@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import DyyUI from 'dyy-ui'
+import ElementPlus from 'element-plus'
+import DyyUI from '../../core/index'
+import 'element-plus/dist/index.css'
 import 'dyy-ui/dist/index.css'
 
-createApp(App).use(DyyUI).mount('#app')
+createApp(App).use(ElementPlus).use(DyyUI).mount('#app')

@@ -34,7 +34,7 @@ export default defineConfig({
     }),
     terser({
       compress: {
-        drop_console: ["log"],
+        // drop_console: ["log"],
         drop_debugger: true,
         passes: 3,
         global_defs: {

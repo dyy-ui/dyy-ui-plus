@@ -1,9 +1,7 @@
----
-title: Docs with VitePress
-editLink: true
----
 
 # SearchForm 提示
+
+## 基础用法
 
 ::: preview
 
