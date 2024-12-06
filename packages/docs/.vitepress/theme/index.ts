@@ -10,7 +10,6 @@ import "element-plus/dist/index.css";
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import "dyy-ui/dist/index.css";
 import './custom.css'
-import "virtual:uno.css";
 
 
 export default {

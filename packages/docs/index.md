@@ -8,7 +8,7 @@ hero:
   tagline: 基于 Vue3 + TS + ElementPlus 后台管理系统的组件库
   actions:
     - theme: brand
-      text: 开始适用
+      text: 开始使用
       link: /markdown-examples
 
 features:
