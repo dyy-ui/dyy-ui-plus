@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 const onSubmit = (data:any) => {
+  toggleDark()
   ElMessage({
     message: JSON.stringify(data),
     grouping: true,

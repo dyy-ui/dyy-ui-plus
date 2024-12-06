@@ -1,11 +1,17 @@
 import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
+import UnoCSS from 'unocss/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "My Awesome Project",
   description: "A VitePress Site",
   base: "/dyy-ui/",
+  vite: {
+    plugins: [
+      UnoCSS()
+    ] as any,
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

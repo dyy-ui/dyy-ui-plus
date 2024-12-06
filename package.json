@@ -47,9 +47,11 @@
     "@dyy-ui/theme": "workspace:*",
     "@dyy-ui/utils": "workspace:*",
     "@dyy-ui/vite-plugins": "workspace:*",
+    "@vueuse/core": "^12.0.0",
     "dyy-ui": "workspace:*",
     "element-plus": "^2.9.0",
     "lodash-es": "^4.17.21",
+    "unocss": "^0.65.1",
     "vue": "^3.5.13"
   }
 }

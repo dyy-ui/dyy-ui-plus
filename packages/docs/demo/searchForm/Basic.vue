@@ -1,5 +1,6 @@
 <template>
-   <lx-search-form :item-list="itemList" @handleSubmit="onSubmit"></lx-search-form>
+   
+   <lx-search-form :item-list="itemList" @handleSubmit="onSubmit" label-width="80px"></lx-search-form>
 </template>
 
 <script setup lang="ts">
