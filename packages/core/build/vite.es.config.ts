@@ -2,10 +2,9 @@ import { defineConfig } from "vite";
 import { readdirSync, readdir } from "fs";
 import { resolve } from "path";
 import { defer, delay, filter, map, includes } from "lodash-es";
-import { visualizer } from "rollup-plugin-visualizer";
 import { hooksPlugin as hooks } from "@dyy-ui/vite-plugins";
 import shell from "shelljs";
-
+import UnoCSS from 'unocss/vite'
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
 import terser from "@rollup/plugin-terser";
@@ -35,9 +34,7 @@ function moveStyles() {
 export default defineConfig({
   plugins: [
     vue(),
-    visualizer({
-      filename: "dist/stats.es.html",
-    }),
+    UnoCSS(),
     dts({
       tsconfigPath: "../../tsconfig.build.json",
       outDir: "dist/types",
@@ -74,7 +71,6 @@ export default defineConfig({
         "./dist/es",
         "./dist/theme",
         "./dist/types",
-        "./dist/stats.es.html",
       ],
       afterBuild: moveStyles,
     }),

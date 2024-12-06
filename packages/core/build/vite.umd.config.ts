@@ -2,9 +2,9 @@ import { defineConfig } from "vite";
 import { readFile } from "fs";
 import { resolve } from "path";
 import { defer, delay } from "lodash-es";
-import { visualizer } from "rollup-plugin-visualizer";
 import { hooksPlugin as hooks } from "@dyy-ui/vite-plugins";
 import shell from "shelljs";
+import UnoCSS from 'unocss/vite'
 
 import vue from "@vitejs/plugin-vue";
 import compression from "vite-plugin-compression";
@@ -26,11 +26,9 @@ function moveStyles() {
 export default defineConfig({
   plugins: [
     vue(),
+    UnoCSS(),
     compression({
       filter: /.(cjs|css)$/i,
-    }),
-    visualizer({
-      filename: "dist/stats.umd.html",
     }),
     terser({
       compress: {
@@ -45,7 +43,7 @@ export default defineConfig({
       },
     }),
     hooks({
-      rmFiles: ["./dist/umd", "./dist/index.css", "./dist/stats.umd.html"],
+      rmFiles: ["./dist/umd", "./dist/index.css"],
       afterBuild: moveStyles,
     }),
   ],
