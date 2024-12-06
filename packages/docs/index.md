@@ -3,23 +3,20 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "DYY-UI 组件库"
+  text: "ElementPlus 二次封装"
+  tagline: 基于 Vue3 + TS + ElementPlus 后台管理系统的组件库
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: 开始适用
       link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 基于 Element Plus
+    details: 在 Element Plus 的基础上进行了深度定制，以满足管理平台的特定需求。
+  - title: 易于集成
+    details: 提供丰富的组件，方便开发者快速集成到现有的项目中。
+  - title: 文档完善
+    details: 提供详细的文档和示例代码，帮助开发者快速上手。
 ---
 

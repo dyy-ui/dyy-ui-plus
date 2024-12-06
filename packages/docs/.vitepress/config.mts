@@ -1,30 +1,34 @@
 import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 import UnoCSS from 'unocss/vite'
+import { presetUno } from 'unocss'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
+  title: "DYY-UI",
   description: "A VitePress Site",
   base: "/dyy-ui/",
   vite: {
     plugins: [
-      UnoCSS()
+      UnoCSS({
+        presets: [presetUno({
+          important: '#app',
+        })],
+      })
     ] as any,
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '开始使用', link: '/' },
+      { text: '组件', link: '/markdown-examples' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: '指南',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '快速开始', link: '/markdown-examples' },
         ]
       },
       {
