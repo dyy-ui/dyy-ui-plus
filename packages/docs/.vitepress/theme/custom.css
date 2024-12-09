@@ -14,3 +14,11 @@
 .vp-doc tr{
   border-top: none;
 }
+
+.VPSidebar{
+  background-color: #fff !important; 
+}
+
+.VPNavBar.has-sidebar .title{
+  background-color: #fff !important; 
+}
