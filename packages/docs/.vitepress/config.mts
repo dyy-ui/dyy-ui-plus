@@ -22,10 +22,9 @@ export default defineConfig({
       },
       {
         text: "基础组件",
-        collapsed: false,
         items: [
-          { text: "SearchForm 表单", link: "components/searchForm" },
-          { text: "Table 表格", link: "components/table" },
+          { text: "searchForm", link: "/components/searchForm" },
+          { text: "table", link: "/components/table" },
         ],
       },
     ],

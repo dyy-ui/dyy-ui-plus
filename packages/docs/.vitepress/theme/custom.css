@@ -5,4 +5,12 @@
 
 .vp-doc table{
   margin: 0 !important;
+  overflow-x: initial !important;
+}
+.vp-doc th, .vp-doc td {
+  border: none;
+}
+
+.vp-doc tr{
+  border-top: none;
 }
