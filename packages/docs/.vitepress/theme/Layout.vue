@@ -17,9 +17,6 @@ const enableTransitions = () =>
 
 provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   if (!enableTransitions()) {
-    
-    
-   
     isDark.value = !isDark.value
     return
   }
@@ -35,7 +32,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   await document.startViewTransition(async () => {
     isDark.value = !isDark.value
     toggleDark()
-    console.log(988);
     await nextTick()
   }).ready
 

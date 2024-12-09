@@ -91,7 +91,6 @@
 </template>
 
 <script lang="ts" setup>
-console.log(6666)
 import { ref, computed, defineProps, defineEmits, withDefaults, onBeforeMount } from 'vue'
 import type { FormInstance } from 'element-plus'
 import type { SearchFormItem, SearchFormProps } from './types'
