@@ -7,6 +7,9 @@ export default defineConfig({
   description: "A VitePress Site",
   base: "/dyy-ui/",
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '开始使用', link: '/' },
