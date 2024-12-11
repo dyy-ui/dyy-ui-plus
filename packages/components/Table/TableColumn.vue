@@ -17,6 +17,7 @@
   </el-table-column>
 </template>
 <script setup lang="ts">
+import { defineProps, withDefaults } from 'vue'
 import type { DTableColumnsProps } from './types.ts'
 withDefaults(defineProps<Partial<DTableColumnsProps>>(), {
   columns: () => [],
