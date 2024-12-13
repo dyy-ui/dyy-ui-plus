@@ -8,7 +8,7 @@
   </el-table>
 </template>
 <script setup lang="ts">
-import { computed, ref, useSlots } from 'vue'
+import { computed, ref, useSlots, withDefaults, defineProps } from 'vue'
 import TableColumn from './TableColumn.vue';
 import type { DTableProps } from './types.ts'
 defineOptions({
