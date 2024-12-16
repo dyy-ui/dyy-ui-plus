@@ -2,7 +2,10 @@
   "name": "@dyy-ui/docs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.md",
+  "main": "dist/index.html",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
