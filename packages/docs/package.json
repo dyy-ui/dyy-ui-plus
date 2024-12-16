@@ -2,10 +2,8 @@
   "name": "@dyy-ui/docs",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.md",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vitepress dev",
     "build": "vitepress build",
     "docs:preview": "vitepress preview"
