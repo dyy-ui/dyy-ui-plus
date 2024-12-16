@@ -1,4 +1,4 @@
-name: Test and deploy
+name: DYY-UI-PLUS
 
 on:
   push:
@@ -22,6 +22,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
+      
+      - name: Build hooks
+        run: npm run build-hooks
 
   build:
     name: Build docs
@@ -45,7 +48,7 @@ jobs:
         run: npm run docs:build
 
       - name: Upload docs
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: docs
           path: ./packages/docs/.vitepress/dist
@@ -64,4 +67,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: .
