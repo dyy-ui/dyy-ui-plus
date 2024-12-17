@@ -45,11 +45,8 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: 构建文档
-        env:
-          NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
-          npm run docs:build
-          > ./packages/docs/.vitepress/dist/.nojekyll
+        run: npm run docs:build
+          
 
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
