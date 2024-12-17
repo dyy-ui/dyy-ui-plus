@@ -44,7 +44,6 @@
   "dependencies": {
     "@dyy-ui/components": "workspace:*",
     "@dyy-ui/hooks": "workspace:*",
-    "@dyy-ui/docs": "workspace:*",
     "@dyy-ui/theme": "workspace:*",
     "@dyy-ui/utils": "workspace:*",
     "@dyy-ui/vite-plugins": "workspace:*",
