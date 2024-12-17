@@ -44,14 +44,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build docs
-        run: npm run docs:build
+      - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: |-
+          npm run docs:build
+          > ./packages/docs/.vitepress/dist/.nojekyll
 
-      - name: Upload docs
-        uses: actions/upload-artifact@v3
+      - name: 部署文档
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: docs
-          path: ./packages/docs/.vitepress/dist
+          # 这是文档部署到的分支名称
+          branch: gh-pages
+          folder: ./packages/docs/.vitepress/dist
+          
+    
 
   deploy:
     name: Deploy to GitHub Pages
