@@ -5,7 +5,7 @@ import { containerPreview, componentPreview } from '@vitepress-demo-preview/plug
 export default defineConfig({
   title: "DYY-UI",
   description: "A VitePress Site",
-  base: "/dyy-ui/",
+  base: "/dyy-ui-plus/",
   themeConfig: {
     search: {
       provider: 'local'
