@@ -17,9 +17,9 @@
       "import": "./dist/es/index.js",
       "require": "./dist/umd/index.umd.cjs"
     },
-    "./theme/": {
-      "import": "./dist/theme/",
-      "require": "./dist/theme/"
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
   "scripts": {
