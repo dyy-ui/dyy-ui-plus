@@ -1,11 +1,19 @@
 import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
+import { resolve } from 'path';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "DYY-UI",
   description: "A VitePress Site",
   base: "/dyy-ui-plus/",
+  vite: {
+    resolve: {
+      alias: {
+        'dyy-ui': resolve(__dirname, '../../../packages/core') // 指向源码路径
+      }
+    }
+  },
   themeConfig: {
     search: {
       provider: 'local'
