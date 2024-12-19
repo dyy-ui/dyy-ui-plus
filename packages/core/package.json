@@ -16,10 +16,6 @@
     ".": {
       "import": "./dist/es/index.js",
       "require": "./dist/umd/index.umd.cjs"
-    },
-    "./dist/": {
-      "import": "./dist/",
-      "require": "./dist/"
     }
   },
   "scripts": {
