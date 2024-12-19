@@ -1,7 +1,7 @@
 import DefaultTheme from "vitepress/theme";
 import { type App } from "vue";
-import DyyUI from "dyy-ui";
 import ElementPlus from "element-plus";
+import DyyUI from "dyy-ui";
 import { ElementPlusContainer } from "@vitepress-demo-preview/component";
 import Layout from "./Layout.vue";
 

@@ -94,7 +94,6 @@ export default defineConfig({
         "@fortawesome/vue-fontawesome",
         "@popperjs/core",
         "async-validator",
-        'virtual:uno.css'
       ],
       output: {
         assetFileNames: (chunkInfo) => {
