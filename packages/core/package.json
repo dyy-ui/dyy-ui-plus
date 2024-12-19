@@ -11,6 +11,17 @@
     "./dist/theme/*.css"
   ],
   "main": "./dist/umd/index.umd.cjs",
+  "module": "./dist/es/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/index.umd.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
   "scripts": {
     "build": "run-p build-umd",
     "build:watch": "run-p build-es:watch build-umd:watch",
