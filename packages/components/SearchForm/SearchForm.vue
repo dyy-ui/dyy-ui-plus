@@ -165,6 +165,7 @@ defineExpose({
   form,
 })
 </script>
-<style scoped>
+<style scoped lang="scss">
 @import "./style.css"
+
 </style>

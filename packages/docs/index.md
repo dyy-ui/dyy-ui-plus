@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "DYY-UI 组件库"
+  name: "DYY-UI-PLUS 组件库"
   text: "ElementPlus 二次封装"
   tagline: 基于 Vue3 + TS + ElementPlus 后台管理系统的组件库
   actions:
