@@ -40,8 +40,7 @@ jobs:
         uses: actions/setup-node@v4
       - name: Install pnpm
         run: npm install -g pnpm
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
@@ -50,6 +49,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path:  ./packages/docs/.vitepress/dist
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          publish_dir: .
 
   # 部署工作
   deploy:
@@ -63,8 +67,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: .
+  
+        
