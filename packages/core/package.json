@@ -25,7 +25,7 @@
     }
   },
   "scripts": {
-    "build": "run-p build-umd",
+    "build": "run-p build-es build-umd",
     "build:watch": "run-p build-es:watch build-umd:watch",
     "build-es": "vite build --config build/vite.es.config.ts",
     "build-umd": "vite build --config build/vite.umd.config.ts",
