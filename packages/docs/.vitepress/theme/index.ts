@@ -1,14 +1,14 @@
 import DefaultTheme from "vitepress/theme";
 import { type App } from "vue";
 import ElementPlus from "element-plus";
-import DyyUI from "dyy-ui";
+import DyyUI from "dyy-ui-plus";
 import { ElementPlusContainer } from "@vitepress-demo-preview/component";
 import Layout from "./Layout.vue";
 
 import '@vitepress-demo-preview/component/dist/style.css'
 import "element-plus/dist/index.css";
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import "dyy-ui/dist/index.css";
+import "dyy-ui-plus/dist/index.css";
 import './custom.css'
 
 

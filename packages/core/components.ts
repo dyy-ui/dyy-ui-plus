@@ -1,7 +1,7 @@
 import {
   LxSearchForm,
   LxTable,
-} from "@dyy-ui/components";
+} from "@dyy-ui-plus/components";
 import type { Plugin } from "vue";
 import "virtual:uno.css";
 

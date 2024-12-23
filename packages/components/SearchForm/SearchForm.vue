@@ -94,7 +94,7 @@
 import { ref, computed, defineProps, defineEmits, withDefaults, onBeforeMount } from 'vue'
 import type { FormInstance } from 'element-plus'
 import type { SearchFormItem, SearchFormProps } from './types'
-import { getValueByPath } from '@dyy-ui/utils'
+import { getValueByPath } from '@dyy-ui-plus/utils'
 
 defineOptions({
   name: "LxSearchForm",

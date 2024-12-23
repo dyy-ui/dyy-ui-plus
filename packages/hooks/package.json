@@ -1,5 +1,5 @@
 {
-  "name": "@dyy-ui/hooks",
+  "name": "@dyy-ui-plus/hooks",
   "version": "1.0.0",
   "type": "module",
   "module": "./dist/index.js",

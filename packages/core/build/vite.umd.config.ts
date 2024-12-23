@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { readFile } from "fs";
 import { resolve } from "path";
 import { defer, delay } from "lodash-es";
-import { hooksPlugin as hooks } from "@dyy-ui/vite-plugins";
+import { hooksPlugin as hooks } from "@dyy-ui-plus/vite-plugins";
 import shell from "shelljs";
 import UnoCSS from 'unocss/vite'
 
