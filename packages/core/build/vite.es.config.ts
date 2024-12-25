@@ -9,6 +9,7 @@ import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
 import terser from "@rollup/plugin-terser";
 
+
 const TRY_MOVE_STYLES_DELAY = 750 as const;
 
 const isProd = process.env.NODE_ENV === "production";
@@ -38,6 +39,7 @@ export default defineConfig({
     dts({
       tsconfigPath: "../../tsconfig.build.json",
       outDir: "dist/types",
+    
     }),
     terser({
       compress: {
@@ -89,11 +91,9 @@ export default defineConfig({
     rollupOptions: {
       external: [
         "vue",
-        "@fortawesome/fontawesome-svg-core",
-        "@fortawesome/free-solid-svg-icons",
-        "@fortawesome/vue-fontawesome",
         "@popperjs/core",
         "async-validator",
+        "element-plus",
       ],
       output: {
         assetFileNames: (chunkInfo) => {

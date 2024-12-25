@@ -25,13 +25,12 @@
     }
   },
   "scripts": {
-    "build": "run-p clean build-es build-umd",
+    "build": "run-p build-es build-umd",
     "build:watch": "run-p build-es:watch build-umd:watch",
     "build-es": "vite build --config build/vite.es.config.ts",
     "build-umd": "vite build --config build/vite.umd.config.ts",
     "build-es:watch": "vite build --watch --config build/vite.es.config.ts",
     "build-umd:watch": "vite build --watch --config build/vite.umd.config.ts",
-    "clean": "rimraf dist",
     "release": "release-it"
   },
   "keywords": [],
@@ -39,9 +38,6 @@
   "license": "ISC",
   "dependencies": {
     "@dyy-ui-plus/components": "workspace:*",
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/vue-fontawesome": "^3.0.6",
     "@popperjs/core": "^2.11.8",
     "async-validator": "^4.2.5"
   },

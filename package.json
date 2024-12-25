@@ -35,7 +35,6 @@
     "postcss-for": "^2.1.1",
     "postcss-nested": "^7.0.2",
     "release-it": "^17.10.0",
-    "rimraf": "^6.0.1",
     "rollup": "^4.18.0",
     "sass-embedded": "^1.83.0",
     "shelljs": "^0.8.5",

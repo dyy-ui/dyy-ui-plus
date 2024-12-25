@@ -14,6 +14,7 @@ import type { DTableProps } from './types.ts'
 defineOptions({
   name: "LxTable",
 });
+
 const data = ref([])
 const slots = useSlots()
 
