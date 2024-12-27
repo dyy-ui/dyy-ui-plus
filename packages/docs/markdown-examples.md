@@ -5,15 +5,15 @@
 ::: code-group
 
 ```sh [npm]
-npm install dyy-ui
+npm install dyy-ui-plus
 ```
 
 ```sh [yarn]
-yarn add dyy-ui
+yarn add dyy-ui-plus
 ```
 
 ```sh [pnpm]
-pnpm add dyy-ui
+pnpm add dyy-ui-plus
 ```
 
 :::
@@ -22,8 +22,8 @@ pnpm add dyy-ui
 
 ```ts
 import Vue from 'vue';
-import DyyUI from 'dyy-ui';
-import 'dyy-ui/dist/index.css';
+import DYYUIPLUS from 'dyy-ui-plus';
+import 'dyy-ui-plus/dist/index.css';
 
-Vue.use(DyyUI);
+Vue.use(DYYUIPLUS);
 ```
