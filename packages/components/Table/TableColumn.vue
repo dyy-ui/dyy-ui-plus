@@ -9,8 +9,8 @@
     </template>
     <template v-if="item.children && item.children.length">
       <table-column v-if="item.children && item.children.length" :columns="item.children">
-        <template v-for="temp in item.children" #[temp.slot]="scope" :key="temp.slot">
-          <slot v-if="temp.slot" :name="temp.slot" v-bind="{ ...scope }"></slot>
+        <template v-for="temp in item.children" #[temp.slot]="scope " :key="temp.slot">
+          <slot v-if="temp.slot" :name="temp.slot" v-bind="{ ...scope, temp }"></slot>
         </template>
       </table-column>
     </template>
@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import { defineProps, withDefaults } from 'vue'
 import type { DTableColumnsProps } from './types.ts'
+
 withDefaults(defineProps<Partial<DTableColumnsProps>>(), {
   columns: () => [],
 })

@@ -26,7 +26,7 @@
             <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
               <slot :name="slotItem" :item="item"></slot>
             </template>
-            <el-option v-for="option in validOptions(item.options)" :key="option.value" :label="option.label" :value="option.value"></el-option>
+            <el-option v-for="option in validOptions(item.options ?? [])" :key="option.value" :label="option.label" :value="option.value"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item v-if="item.type === 'selectV2'" :label="item.label" :prop="item.prop">
@@ -161,8 +161,8 @@ const handleMore = () => {
   showMore.value = !showMore.value
 }
 
-const validOptions = (options: any): OptionType[] => {
-  return options.filter(option => option.value !== undefined);
+const validOptions = (options: OptionType[]): OptionType[] => {
+  return options.filter((option: OptionType) => option.value !== undefined);
 }
 
 defineExpose({
