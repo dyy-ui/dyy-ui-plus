@@ -26,11 +26,11 @@
             <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
               <slot :name="slotItem" :item="item"></slot>
             </template>
-            <el-option v-for="option in item.options" :key="option.value" v-bind="option"></el-option>
+            <el-option v-for="option in validOptions(item.options)" :key="option.value" :label="option.label" :value="option.value"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item v-if="item.type === 'selectV2'" :label="item.label" :prop="item.prop">
-          <el-select-v2 v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs" v-on="item.event" class="w-100%">
+          <el-select-v2 v-model="form[item?.prop]" :options="(item.options as OptionType[])" v-bind="item.attrs" v-on="item.event" class="w-100%">
             <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
               <slot :name="slotItem" :item="item"></slot>
             </template>
@@ -41,7 +41,7 @@
           :label="item.label"
           :prop="item.prop"
         >
-          <el-date-picker v-model="form[item?.prop]" :type="item.type" v-bind="item.attrs" v-on="item.event" class="important-w-100%">
+          <el-date-picker v-model="form[item?.prop]" :type="item.type as DateType" v-bind="item.attrs" v-on="item.event" class="important-w-100%">
             <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
               <slot :name="slotItem" :item="item"></slot>
             </template>
@@ -93,7 +93,7 @@
 <script lang="ts" setup>
 import { ref, computed, defineProps, defineEmits, withDefaults, onBeforeMount } from 'vue'
 import type { FormInstance } from 'element-plus'
-import type { SearchFormItem, SearchFormProps } from './types'
+import type { SearchFormItem, SearchFormProps, OptionType, DateType } from './types'
 import { getValueByPath } from '@dyy-ui-plus/utils'
 
 defineOptions({
@@ -159,6 +159,10 @@ const initForm = () => {
 
 const handleMore = () => {
   showMore.value = !showMore.value
+}
+
+const validOptions = (options: any): OptionType[] => {
+  return options.filter(option => option.value !== undefined);
 }
 
 defineExpose({

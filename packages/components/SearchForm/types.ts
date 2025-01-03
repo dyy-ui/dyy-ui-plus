@@ -1,5 +1,10 @@
-import type { FormItemProps, FormRules } from 'element-plus'
-
+import type { FormItemProps, FormRules, CascaderOption } from 'element-plus'
+type OptionCommon = Record<string, any>;
+export type Option = OptionCommon & {
+    created?: boolean;
+};
+export type OptionGroup = OptionCommon;
+export type OptionType = Option | OptionGroup;
 export interface ItemTypesProps extends FormItemProps {
   slots: string[]
 }
@@ -22,6 +27,17 @@ type TypeProps =
   | 'cascader'
   | 'checkbox'
   | 'radio'
+
+  export type DateType =
+    | 'year'
+    | 'month'
+    | 'date'
+    | 'dates'
+    | 'datetime'
+    | 'week'
+    | 'daterange'
+    | 'monthrange'
+    | 'datetimerange'
 export interface SearchFormItem extends FormItemProps {
   type: TypeProps
   value?: any
@@ -30,10 +46,7 @@ export interface SearchFormItem extends FormItemProps {
   slot?: string
   api?: Promise<any>
   optionsPath: string
-  options?: {
-    label?: string | number
-    value?: string | number
-  }[]
+  options?: CascaderOption[]
   optionAttrs?: {
     label?: string
     value?: string
