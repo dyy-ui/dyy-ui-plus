@@ -2,6 +2,8 @@
 
 ## 安装
 
+::: code-group
+
 ```sh [npm]
 npm install dyy-ui-plus
 ```
@@ -13,6 +15,8 @@ yarn add dyy-ui-plus
 ```sh [pnpm]
 pnpm add dyy-ui-plus
 ```
+
+:::
 
 ## 引入
 

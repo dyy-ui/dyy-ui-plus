@@ -13,14 +13,14 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '开始使用', link: '/' },
-      { text: '组件', link: '/markdown-examples' }
+      { text: '组件', link: '/markdown' }
     ],
 
     sidebar: [
       {
         text: '指南',
         items: [
-          { text: '快速开始', link: '/markdown-examples' },
+          { text: '快速开始', link: '/markdown' },
         ]
       },
       {
