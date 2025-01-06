@@ -1,11 +1,17 @@
 import { defineConfig } from 'vitepress'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
+import UnoCSS from 'unocss/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "DYY-UI",
   description: "A VitePress Site",
   base: "/dyy-ui-plus/",
+  vite: {
+    plugins: [
+      UnoCSS(),
+    ],
+  },
   themeConfig: {
     search: {
       provider: 'local'
@@ -28,6 +34,7 @@ export default defineConfig({
         items: [
           { text: "searchForm", link: "/components/searchForm" },
           { text: "table", link: "/components/table" },
+          { text: "numberText", link: "/components/numberText" },
         ],
       },
     ],
@@ -41,5 +48,6 @@ export default defineConfig({
       md.use(containerPreview)
       md.use(componentPreview)
     }
-  }
+  },
+
 })

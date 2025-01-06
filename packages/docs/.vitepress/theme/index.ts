@@ -9,6 +9,8 @@ import '@vitepress-demo-preview/component/dist/style.css'
 import "element-plus/dist/index.css";
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import "dyy-ui-plus/dist/index.css";
+import "virtual:uno.css";
+
 import './custom.css'
 
 

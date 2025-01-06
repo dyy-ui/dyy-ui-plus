@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import type { SearchFormItem } from 'dyy-ui-plus'
 const onSubmit = (data: any) => {
   ElMessage({
     message: JSON.stringify(data),
@@ -14,7 +15,7 @@ const onSubmit = (data: any) => {
   console.log(JSON.stringify(data))
 }
 
-const itemList = ref([
+const itemList = ref<SearchFormItem[]>([
   {
     label: '姓名',
     prop: 'name',
