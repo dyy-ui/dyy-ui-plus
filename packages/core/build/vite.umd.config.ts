@@ -51,7 +51,7 @@ export default defineConfig({
     outDir: "dist/umd",
     lib: {
       entry: resolve(__dirname, "../index.ts"),
-      name: "DyyUI",
+      name: "DyyUiPlus",
       fileName: "index",
       formats: ["umd"],
     },
