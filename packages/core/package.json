@@ -37,7 +37,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dyy-ui-plus/components": "workspace:*",
     "@popperjs/core": "^2.11.8",
     "async-validator": "^4.2.5"
   },
@@ -45,7 +44,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "rollup-plugin-visualizer": "^5.12.0",
     "terser": "^5.31.0",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression": "^0.5.1",
   },
   "peerDependencies": {
     "vue": "^3.4.27"

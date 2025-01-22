@@ -1,11 +1,11 @@
 
 import  makeInstaller  from "./makeInstaller";
-import componens from "./components";
+import components from "./components";
 
 import "@dyy-ui-plus/theme/index.css";
 
 
-const installer = makeInstaller(componens);
+const installer = makeInstaller(components);
 
 export * from "../components";
 export default installer;
