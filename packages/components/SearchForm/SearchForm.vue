@@ -170,6 +170,6 @@ defineExpose({
 })
 </script>
 <style scoped lang="scss">
-@import "./style.css"
+@import "./style.css";
 
 </style>

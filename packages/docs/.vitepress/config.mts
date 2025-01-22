@@ -35,6 +35,7 @@ export default defineConfig({
           { text: "searchForm", link: "/components/searchForm" },
           { text: "table", link: "/components/table" },
           { text: "numberText", link: "/components/numberText" },
+          { text: "container", link: "/components/container" },
         ],
       },
     ],
