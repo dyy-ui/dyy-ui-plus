@@ -6,6 +6,8 @@
 .vp-doc table{
   margin: 0 !important;
   overflow-x: initial !important;
+  display: table !important;
+  width: 100%;
 }
 .vp-doc th, .vp-doc td {
   border: none;

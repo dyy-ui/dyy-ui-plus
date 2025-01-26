@@ -9,7 +9,7 @@ export default defineConfig({
   base: "/dyy-ui-plus/",
   vite: {
     plugins: [
-      UnoCSS(),
+      UnoCSS() as any ,
     ],
   },
   themeConfig: {

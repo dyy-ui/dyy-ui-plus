@@ -1,9 +1,9 @@
 
-# SearchForm 提示
+# SearchForm
 
 ## 基础用法
 
-::: preview
+::: preview title || component description content
 demo-preview=../demo/searchForm/Basic.vue
 :::
 
