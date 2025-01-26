@@ -1,0 +1,1 @@
+import{_ as a,c as i,b2 as t,o as e}from"./chunks/framework.B2VMYTRZ.js";const c=JSON.parse('{"title":"快速开始","description":"","frontmatter":{},"headers":[],"relativePath":"markdown.md","filePath":"markdown.md"}'),n={name:"markdown.md"};function l(p,s,h,d,k,r){return e(),i("div",null,s[0]||(s[0]=[t("",5)]))}const g=a(n,[["render",l]]);export{c as __pageData,g as default};
