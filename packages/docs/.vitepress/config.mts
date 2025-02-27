@@ -7,6 +7,9 @@ export default defineConfig({
   title: "DYY-UI",
   description: "A VitePress Site",
   base: "/dyy-ui-plus/",
+  head: [
+    ['link', { rel: 'icon', href: '/dyy-ui-plus/favicon.ico' }],
+  ],
   vite: {
     plugins: [
       UnoCSS() as any ,
