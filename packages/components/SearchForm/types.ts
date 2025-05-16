@@ -7,6 +7,7 @@ export type OptionGroup = OptionCommon;
 export type OptionType = Option | OptionGroup;
 export interface ItemTypesProps extends FormItemProps {
   slots: string[]
+  type: TypeProps
 }
 type TypeProps =
   | 'input'

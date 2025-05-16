@@ -7,52 +7,31 @@
           <slot :name="item.slot" :item="item"></slot>
         </template>
         <!-- slot end -->
-        <el-form-item v-if="item.type === 'input'" :label="item.label" :prop="item.prop">
-          <el-input v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-          </el-input>
+        <el-form-item v-if="item.type !== 'cascader'" :label="item.label" :prop="item.prop">
+          <component 
+            :is="componentMap[item.type]" 
+            v-model="form[item?.prop]" 
+            :type="item.attrs?.type as DateType" 
+            :options="item.options" 
+            v-bind="item.attrs" 
+            v-on="item.event" 
+            class="w-100%"
+            >
+              <template v-for="slotItem in item.attrs?.slots" #[slotItem] :key="slotItem">
+                <slot :name="slotItem" :item="item"></slot>
+              </template>
+              <template v-if="item.options && item.type ==='select'">
+                <el-option v-for="option in validOptions(item.options ?? [])" :key="option.value" :label="option.label" :value="option.value"></el-option>
+              </template>
+              <template v-if="item.options && item.type ==='checkbox'">
+                <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option"></el-checkbox>
+              </template>
+              <template v-if="item.options && item.type ==='radio'">
+                <el-radio v-for="option in item.options" :key="option.value" v-bind="option"></el-radio>
+              </template>
+          </component>
         </el-form-item>
-        <el-form-item v-if="item.type === 'inputNumber'" :label="item.label" :prop="item.prop">
-          <el-input-number v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-          </el-input-number>
-        </el-form-item>
-        <el-form-item v-if="item.type === 'select'" :label="item.label" :prop="item.prop">
-          <el-select v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event" class="w-100%">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-            <el-option v-for="option in validOptions(item.options ?? [])" :key="option.value" :label="option.label" :value="option.value"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item v-if="item.type === 'selectV2'" :label="item.label" :prop="item.prop">
-          <el-select-v2 v-model="form[item?.prop]" :options="(item.options as OptionType[])" v-bind="item.attrs" v-on="item.event" class="w-100%">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-          </el-select-v2>
-        </el-form-item>
-        <el-form-item
-          v-if="['year', 'month', 'date', 'dates', 'datetime', 'week', 'datetimerange', 'daterange', 'monthrange'].includes(item.type)"
-          :label="item.label"
-          :prop="item.prop"
-        >
-          <el-date-picker v-model="form[item?.prop]" :type="item.type as DateType" v-bind="item.attrs" v-on="item.event" class="important-w-100%">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item v-if="item.type === 'timePicker'" :label="item.label" :prop="item.prop">
-          <el-time-picker v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event" class="important-w-100%" />
-        </el-form-item>
-        <el-form-item v-if="item.type === 'timeSelect'" :label="item.label" :prop="item.prop">
-          <el-time-select v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event" class="important-w-100%" />
-        </el-form-item>
+        <!-- TODO  cascader 用上面的方法 node-content.ts renderLabelFn 会返回有值，导致label渲染不出来 -->
         <el-form-item v-if="item.type === 'cascader'" :label="item.label" :prop="item.prop">
           <el-cascader v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs" v-on="item.event">
             <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
@@ -60,22 +39,7 @@
             </template>
           </el-cascader>
         </el-form-item>
-        <el-form-item v-if="item.type === 'checkbox'" :label="item.label" :prop="item.prop">
-          <el-checkbox-group v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-            <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option"></el-checkbox>
-          </el-checkbox-group>
-        </el-form-item>
-        <el-form-item v-if="item.type === 'radio'" :label="item.label" :prop="item.prop">
-          <el-radio-group v-model="form[item?.prop]" v-bind="item.attrs" v-on="item.event">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-            <el-radio v-for="option in item.options" :key="option.value" v-bind="option"></el-radio>
-          </el-radio-group>
-        </el-form-item>
+       
       </el-col>
       <el-col :span="6" class="text-right m-l-a">
         <el-button @click="handleSearch" type="primary">查询</el-button>
@@ -91,6 +55,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ElInput, ElInputNumber, ElSelect, ElSelectV2, ElDatePicker, ElTimePicker, ElTimeSelect, ElCascader, ElCheckboxGroup, ElRadioGroup } from 'element-plus'
 import { ref, computed, defineProps, defineEmits, withDefaults, onBeforeMount } from 'vue'
 import type { FormInstance } from 'element-plus'
 import type { SearchFormItem, SearchFormProps, OptionType, DateType } from './types'
@@ -102,6 +67,19 @@ defineOptions({
 const formRef = ref<FormInstance>()
 const form = ref<any>({})
 const showMore = ref(false)
+
+const componentMap = {
+  input: ElInput,
+  inputNumber: ElInputNumber,
+  select: ElSelect,
+  selectV2: ElSelectV2,
+  datePicker: ElDatePicker,
+  timePicker: ElTimePicker,
+  timeSelect: ElTimeSelect,
+  cascader: ElCascader,
+  checkbox: ElCheckboxGroup,
+  radio: ElRadioGroup,
+} as const;
 
 const props = withDefaults(defineProps<SearchFormProps>(), {
   formAttrs: () => ({

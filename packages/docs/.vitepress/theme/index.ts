@@ -1,7 +1,9 @@
 import DefaultTheme from "vitepress/theme";
 import { type App } from "vue";
 import ElementPlus from "element-plus";
-import DyyUI from "dyy-ui-plus";
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+// import DyyUI from "../../../core/index";
+import DyyUI from "dyy-ui-plus"
 import { ElementPlusContainer } from "@vitepress-demo-preview/component";
 import Layout from "./Layout.vue";
 
@@ -19,7 +21,7 @@ export default {
   Layout: Layout,
   enhanceApp({ app }: { app: App }) {
     app.component("demo-preview", ElementPlusContainer);
-    app.use(ElementPlus)
+    app.use(ElementPlus, {locale: zhCn,})
     app.use(DyyUI);
   },
 };

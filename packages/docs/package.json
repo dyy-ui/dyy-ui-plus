@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.5.0",
+    "vitepress-plugin-llms": "^1.1.3"
   },
   "dependencies": {
     "@vitepress-demo-preview/component": "^2.3.2",

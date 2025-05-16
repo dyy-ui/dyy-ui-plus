@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import llmstxt from 'vitepress-plugin-llms'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 import UnoCSS from 'unocss/vite'
 
@@ -13,6 +14,7 @@ export default defineConfig({
   vite: {
     plugins: [
       UnoCSS() as any ,
+      llmstxt()
     ],
   },
   themeConfig: {

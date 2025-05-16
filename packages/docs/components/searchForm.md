@@ -17,7 +17,7 @@ demo-preview=../demo/searchForm/Basic.vue
 
 ## SearchFormItem
 
-type 可以为 `input` `inputNumber` `select` `selectV2` `date` `datetime` `daterange` `year` `month` `dates` `week` `datetimerange` `monthrange` `timePicker` `timeSelect` `cascader` `checkbox` `radio`
+type 可以为 `input` `inputNumber` `select` `selectV2` `datePicker` `timePicker` `timeSelect` `cascader` `checkbox` `radio`
 
 | 参数        | 类型                                      | 默认值 | 可选值 | 说明                                                                               |
 | :---------- | :---------------------------------------- | :----- | :----- | :--------------------------------------------------------------------------------- |

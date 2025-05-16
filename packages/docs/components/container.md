@@ -11,4 +11,3 @@ demo-preview=../demo/container/Basic.vue
 | name   | 说明   |
 |:-------|:-----|
 | table  | 内容区域 |
-
