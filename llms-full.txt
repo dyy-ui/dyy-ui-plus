@@ -1,0 +1,155 @@
+---
+url: /components/container.md
+---
+# Container
+
+## 基础用法
+
+::: preview
+demo-preview=../demo/container/Basic.vue
+:::
+
+## Slot
+
+| name   | 说明   |
+|:-------|:-----|
+| table  | 内容区域 |
+
+---
+
+---
+url: /components/numberText.md
+---
+# NumberText 提示
+
+## 基础用法
+
+::: preview
+demo-preview=../demo/numberText/Basic.vue
+:::
+
+## 属性
+
+| 参数     | 类型   | 说明               |
+| :------- | :----- | :----------------- |
+| to       | number | 动画开始时数字大小 |
+| from     | number | 数字大小           |
+| duration | number | 动画持续时间(ms)   |
+
+## Slot
+
+| name   | 说明         |
+| :----- | :----------- |
+| prefix | 数字前缀内容 |
+| suffix | 数字后缀内容 |
+
+---
+
+---
+url: /components/searchForm.md
+---
+# SearchForm
+
+## 基础用法
+
+::: preview title || component description content
+demo-preview=../demo/searchForm/Basic.vue
+:::
+
+## 属性
+
+| 参数     | 类型                                     | 默认值 | 说明             |
+| :------- | :--------------------------------------- | :----- | :--------------- |
+| itemList | Array[\[SearchFormItem\]](#searchformitem) | \[]     | 输入框的提示文字 |
+| rows     | Number                                   | 2      | 展示几行         |
+| cols     | Number                                   | 4      | 展示几列         |
+
+## SearchFormItem
+
+type 可以为 `input` `inputNumber` `select` `selectV2` `datePicker` `timePicker` `timeSelect` `cascader` `checkbox` `radio`
+
+| 参数        | 类型                                      | 默认值 | 可选值 | 说明                                                                               |
+| :---------- | :---------------------------------------- | :----- | :----- | :--------------------------------------------------------------------------------- |
+| type        | String                                    | ''     | `enum` | 表单元素类型                                                                       |
+| lebal       | String                                    | ''     |        | 表单 label                                                                         |
+| prop        | String                                    | ''     |        | v-model 绑定                                                                       |
+| slot        | String                                    | ''     |        | 自定义 slot                                                                        |
+| value       | String                                    | ''     |        | 默认值                                                                             |
+| attrs       | Object[\[ItemTypesProps\]](#itemtypesprops) | {}     |        | element-plus 表单元素自带属性                                                      |
+| event       | Object                                    | {}     |        | element-plus 表单元素自带事件                                                      |
+| api         | Promise                                   |        |        | `type=select` 时需要请求后端接口获取数据时使用                                     |
+| optionsPath | string                                    |        |        | `type=select` 时需要请求后端接口获取数据时使用嵌套数据格式路径，例子：`data.items` |
+| optionAttrs | Object      |        |        | `type=select` 数据字段                                                             |
+
+## ItemTypesProps
+
+| 参数  | 类型     | 默认值 | 说明                               |
+| :---- | :------- | :----- | :--------------------------------- |
+| slots | String\[] | ''     | element-plus 表单元素所拥有的 slot |
+
+## 事件
+
+| 事件名       | 类型           | 说明                     |
+| :----------- | :------------- | :----------------------- |
+| handleSubmit | Function(data) | 查询方法 data 为表单数据 |
+
+---
+
+---
+url: /components/table.md
+---
+# Table
+
+## 基础用法
+
+::: preview
+demo-preview=../demo/table/Basic.vue
+:::
+
+## 属性
+
+|  参数   | 类型  | 说明       |
+| :-----: | :---: | :--------- |
+| columns | Array | 表格列配置 |
+
+---
+
+---
+url: /index.md
+---
+
+
+---
+
+---
+url: /markdown.md
+---
+# 快速开始
+
+## 安装
+
+::: code-group
+
+```sh [npm]
+npm install dyy-ui-plus
+```
+
+```sh [yarn]
+yarn add dyy-ui-plus
+```
+
+```sh [pnpm]
+pnpm add dyy-ui-plus
+```
+
+:::
+
+## 引入
+
+```ts
+import Vue from 'vue';
+import DYYUIPLUS from 'dyy-ui-plus';
+import 'dyy-ui-plus/dist/index.css';
+
+Vue.use(DYYUIPLUS);
+```
