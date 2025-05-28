@@ -51,6 +51,7 @@
     "@dyy-ui-plus/theme": "workspace:*",
     "@dyy-ui-plus/utils": "workspace:*",
     "@dyy-ui-plus/vite-plugins": "workspace:*",
+    "@dyy-ui-plus/component": "workspace:*",
     "@vueuse/core": "^12.0.0",
     "dyy-ui-plus": "workspace:*",
     "element-plus": "^2.9.0",
