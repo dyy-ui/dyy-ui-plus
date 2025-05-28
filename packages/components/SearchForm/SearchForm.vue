@@ -1,34 +1,44 @@
 <template>
   <el-form :model="form" ref="formRef" v-bind="formAttrs">
     <el-row>
-      <el-col v-for="(item, index) in itemList" :key="item.type" :span="24 / cols" v-show="index < rows * cols - 1 || showMore">
+      <el-col
+        v-for="(item, index) in itemList"
+        :key="item.type"
+        :span="24 / cols"
+        v-show="index < rows * cols - 1 || showMore"
+      >
         <!-- slot start-->
         <template v-if="item.slot">
           <slot :name="item.slot" :item="item"></slot>
         </template>
         <!-- slot end -->
         <el-form-item v-if="item.type !== 'cascader'" :label="item.label" :prop="item.prop">
-          <component 
-            :is="componentMap[item.type]" 
-            v-model="form[item?.prop]" 
-            :type="item.attrs?.type as DateType" 
-            :options="item.options" 
-            v-bind="item.attrs" 
-            v-on="item.event" 
+          <component
+            :is="componentMap[item.type]"
+            v-model="form[item?.prop]"
+            :type="item.attrs?.type as DateType"
+            :options="item.options"
+            v-bind="item.attrs"
+            v-on="item.event"
             class="w-100%"
-            >
-              <template v-for="slotItem in item.attrs?.slots" #[slotItem] :key="slotItem">
-                <slot :name="slotItem" :item="item"></slot>
-              </template>
-              <template v-if="item.options && item.type ==='select'">
-                <el-option v-for="option in validOptions(item.options ?? [])" :key="option.value" :label="option.label" :value="option.value"></el-option>
-              </template>
-              <template v-if="item.options && item.type ==='checkbox'">
-                <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option"></el-checkbox>
-              </template>
-              <template v-if="item.options && item.type ==='radio'">
-                <el-radio v-for="option in item.options" :key="option.value" v-bind="option"></el-radio>
-              </template>
+          >
+            <template v-for="slotItem in item.attrs?.slots" #[slotItem] :key="slotItem">
+              <slot :name="slotItem" :item="item"></slot>
+            </template>
+            <template v-if="item.options && item.type === 'select'">
+              <el-option
+                v-for="option in validOptions(item.options ?? [])"
+                :key="option.value"
+                :label="option.label"
+                :value="option.value"
+              ></el-option>
+            </template>
+            <template v-if="item.options && item.type === 'checkbox'">
+              <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option"></el-checkbox>
+            </template>
+            <template v-if="item.options && item.type === 'radio'">
+              <el-radio v-for="option in item.options" :key="option.value" v-bind="option"></el-radio>
+            </template>
           </component>
         </el-form-item>
         <!-- TODO  cascader 用上面的方法 node-content.ts renderLabelFn 会返回有值，导致label渲染不出来 -->
@@ -54,99 +64,109 @@
 </template>
 
 <script lang="ts" setup>
-import { ElInput, ElInputNumber, ElSelect, ElSelectV2, ElDatePicker, ElTimePicker, ElTimeSelect, ElCascader, ElCheckboxGroup, ElRadioGroup } from 'element-plus'
-import { ref, computed, defineProps, defineEmits, withDefaults, onBeforeMount } from 'vue'
-import type { FormInstance } from 'element-plus'
-import type { SearchFormItem, SearchFormProps, OptionType, DateType } from './types'
-import { getValueByPath } from '@dyy-ui-plus/utils'
+  import {
+    ElInput,
+    ElInputNumber,
+    ElSelect,
+    ElSelectV2,
+    ElDatePicker,
+    ElTimePicker,
+    ElTimeSelect,
+    ElCascader,
+    ElCheckboxGroup,
+    ElRadioGroup,
+  } from 'element-plus'
+  import { ref, computed, defineProps, defineEmits, withDefaults, onBeforeMount } from 'vue'
+  import type { FormInstance } from 'element-plus'
+  import type { SearchFormItem, SearchFormProps, OptionType, DateType } from './types'
+  import { getValueByPath } from '@dyy-ui-plus/utils'
 
-defineOptions({
-  name: "LxSearchForm",
-});
-const formRef = ref<FormInstance>()
-const form = ref<any>({})
-const showMore = ref(false)
-
-const componentMap = {
-  input: ElInput,
-  inputNumber: ElInputNumber,
-  select: ElSelect,
-  selectV2: ElSelectV2,
-  datePicker: ElDatePicker,
-  timePicker: ElTimePicker,
-  timeSelect: ElTimeSelect,
-  cascader: ElCascader,
-  checkbox: ElCheckboxGroup,
-  radio: ElRadioGroup,
-} as const;
-
-const props = withDefaults(defineProps<SearchFormProps>(), {
-  formAttrs: () => ({
-    labelWidth: '90px',
-  }),
-  itemList: () => [],
-  rows: 2,
-  cols: 4,
-})
-
-const selectApi = computed<SearchFormProps['itemList']>(() => {
-  return props.itemList.filter((item: SearchFormItem) => ['select', 'selectV2'].includes(item.type) && item.api)
-})
-
-const emit = defineEmits(['handleSubmit'])
-
-const handleSearch = () => {
-  formRef.value?.validate((valid) => {
-    if (valid) {
-      emit('handleSubmit', form.value)
-    }
+  defineOptions({
+    name: 'LxSearchForm',
   })
-}
+  const formRef = ref<FormInstance>()
+  const form = ref<any>({})
+  const showMore = ref(false)
 
-selectApi.value.forEach(async (item: SearchFormItem) => {
-  const { data } = await item.api
+  const componentMap = {
+    input: ElInput,
+    inputNumber: ElInputNumber,
+    select: ElSelect,
+    selectV2: ElSelectV2,
+    datePicker: ElDatePicker,
+    timePicker: ElTimePicker,
+    timeSelect: ElTimeSelect,
+    cascader: ElCascader,
+    checkbox: ElCheckboxGroup,
+    radio: ElRadioGroup,
+  } as const
 
-  let tempArr = getValueByPath(data, item.optionsPath ?? '')
-  if (item.optionAttrs) {
-    tempArr.forEach((temp: any) => {
-      temp.label = temp[item.optionAttrs?.label as string]
-      temp.value = temp[item.optionAttrs?.value as string]
+  const props = withDefaults(defineProps<SearchFormProps>(), {
+    formAttrs: () => ({
+      labelWidth: '90px',
+    }),
+    itemList: () => [],
+    rows: 2,
+    cols: 4,
+  })
+
+  const selectApi = computed<SearchFormProps['itemList']>(() => {
+    return props.itemList.filter((item: SearchFormItem) => ['select', 'selectV2'].includes(item.type) && item.api)
+  })
+
+  const emit = defineEmits(['handleSubmit'])
+
+  const handleSearch = () => {
+    formRef.value?.validate((valid) => {
+      if (valid) {
+        emit('handleSubmit', form.value)
+      }
     })
   }
 
-  item.options = tempArr
-})
+  selectApi.value.forEach(async (item: SearchFormItem) => {
+    const { data } = await item.api
 
-onBeforeMount(() => {
-  initForm()
-})
+    let tempArr = getValueByPath(data, item.optionsPath ?? '')
+    if (item.optionAttrs) {
+      tempArr.forEach((temp: any) => {
+        temp.label = temp[item.optionAttrs?.label as string]
+        temp.value = temp[item.optionAttrs?.value as string]
+      })
+    }
 
-// 重置
-const handleReset = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
-}
-
-// 初始化form
-const initForm = () => {
-  props.itemList.forEach((item: SearchFormItem) => {
-    form.value[item?.prop] = item.value
+    item.options = tempArr
   })
-}
 
-const handleMore = () => {
-  showMore.value = !showMore.value
-}
+  onBeforeMount(() => {
+    initForm()
+  })
 
-const validOptions = (options: OptionType[]): OptionType[] => {
-  return options.filter((option: OptionType) => option.value !== undefined);
-}
+  // 重置
+  const handleReset = (formEl: FormInstance | undefined) => {
+    if (!formEl) return
+    formEl.resetFields()
+  }
 
-defineExpose({
-  form,
-})
+  // 初始化form
+  const initForm = () => {
+    props.itemList.forEach((item: SearchFormItem) => {
+      form.value[item?.prop] = item.value
+    })
+  }
+
+  const handleMore = () => {
+    showMore.value = !showMore.value
+  }
+
+  const validOptions = (options: OptionType[]): OptionType[] => {
+    return options.filter((option: OptionType) => option.value !== undefined)
+  }
+
+  defineExpose({
+    form,
+  })
 </script>
 <style scoped lang="scss">
-@import "./style.css";
-
+  @import './style.css';
 </style>
