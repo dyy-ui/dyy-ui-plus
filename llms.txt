@@ -17,6 +17,3 @@
 - [NumberText 提示](/components/numberText.md)
 - [Container](/components/container.md)
 
-### Other
-
-- [Untitled](/index.md)

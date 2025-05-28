@@ -115,13 +115,6 @@ demo-preview=../demo/table/Basic.vue
 ---
 
 ---
-url: /index.md
----
-
-
----
-
----
 url: /markdown.md
 ---
 # 快速开始
