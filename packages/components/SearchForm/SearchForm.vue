@@ -33,13 +33,12 @@
         </el-form-item>
         <!-- TODO  cascader 用上面的方法 node-content.ts renderLabelFn 会返回有值，导致label渲染不出来 -->
         <el-form-item v-if="item.type === 'cascader'" :label="item.label" :prop="item.prop">
-          <el-cascader v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs" v-on="item.event">
+          <el-cascader v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs as any" v-on="item.event">
             <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
               <slot :name="slotItem" :item="item"></slot>
             </template>
           </el-cascader>
         </el-form-item>
-       
       </el-col>
       <el-col :span="6" class="text-right m-l-a">
         <el-button @click="handleSearch" type="primary">查询</el-button>
@@ -107,7 +106,7 @@ const handleSearch = () => {
 selectApi.value.forEach(async (item: SearchFormItem) => {
   const { data } = await item.api
 
-  let tempArr = getValueByPath(data, item.optionsPath)
+  let tempArr = getValueByPath(data, item.optionsPath ?? '')
   if (item.optionAttrs) {
     tempArr.forEach((temp: any) => {
       temp.label = temp[item.optionAttrs?.label as string]

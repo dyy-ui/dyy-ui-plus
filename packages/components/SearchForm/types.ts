@@ -1,14 +1,22 @@
-import type { FormItemProps, FormRules, CascaderOption } from 'element-plus'
+import type { FormRules, CascaderOption, InputProps, InputNumberProps, CascaderProps  } from 'element-plus'
 type OptionCommon = Record<string, any>;
 export type Option = OptionCommon & {
     created?: boolean;
 };
 export type OptionGroup = OptionCommon;
 export type OptionType = Option | OptionGroup;
-export interface ItemTypesProps extends FormItemProps {
-  slots: string[]
-  type: TypeProps
+export interface ItemTypesProps {
+  slots?: string[]
+  type?: TypeProps
 }
+
+type AttrsMap = {
+  input: Partial<InputProps> & ItemTypesProps
+  inputNumber: Partial<InputNumberProps> & ItemTypesProps
+  cascader: Partial<CascaderProps> & ItemTypesProps
+}
+
+
 type TypeProps =
   | 'input'
   | 'inputNumber'
@@ -24,6 +32,7 @@ type TypeProps =
   | 'datetimerange'
   | 'monthrange'
   | 'timePicker'
+  | 'datePicker'
   | 'timeSelect'
   | 'cascader'
   | 'checkbox'
@@ -39,20 +48,20 @@ type TypeProps =
     | 'daterange'
     | 'monthrange'
     | 'datetimerange'
-export interface SearchFormItem extends FormItemProps {
-  type: TypeProps
+export type SearchFormItem<T extends keyof  AttrsMap = keyof AttrsMap> = {
+  type: TypeProps | T
   value?: any
   label: string
   prop: string
   slot?: string
   api?: Promise<any>
-  optionsPath: string
+  optionsPath?: string
   options?: CascaderOption[]
   optionAttrs?: {
     label?: string
     value?: string
   }
-  attrs?: ItemTypesProps
+  attrs?: AttrsMap[T]
   event?: Object
 }
 

@@ -15,7 +15,7 @@ const onSubmit = (data:any) => {
   console.log(JSON.stringify(data))
 }
 
-const itemList = ref([
+const itemList = ref<any[]>([
   {
     label: '姓名',
     prop: 'name',

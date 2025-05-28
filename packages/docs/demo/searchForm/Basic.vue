@@ -7,9 +7,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 import { ElMessage } from 'element-plus'
 import type { SearchFormItem } from 'dyy-ui-plus'
+
+const count = ref(0);
+
+watch(count, (val) => console.log('watch:', val));
+watchEffect(() => console.log('effect:', count.value));
+
+setTimeout(() => count.value = 1, 1000);
+Promise.resolve().then(() => count.value = 2);
+
 const onSubmit = (data: any) => {
   ElMessage({
     message: JSON.stringify(data),
@@ -57,7 +66,6 @@ const itemList = ref<SearchFormItem[]>([
         ]
       }
     ],
-    attrs:{},
     value: [],
   },
   {
