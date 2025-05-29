@@ -3,6 +3,7 @@
   import CodeOpen from '../../icons/code-open.vue'
   import CodeClose from '../../icons/code-close.vue'
   import CodeCopy from '../../icons/code-copy.vue'
+  import UpCode from '../../icons/code-up.vue'
   import { useNameSpace } from '../../hooks/use-namespaces'
   import { useCodeFold } from '../../hooks/use-codefold'
   import { useCodeCopy } from '../../hooks/use-codecopy'
@@ -42,6 +43,8 @@
     else sourceCodeArea.value.style.height = `${value}px`
   }
   onMounted(() => {
+    console.log(props)
+
     // 组件挂载时，先获取代码块容器为折叠前的容器高度
     const currentContainerHeight = sourceCodeContainerHeight.value
     setContainerHeight(currentContainerHeight)
@@ -69,8 +72,11 @@
     </section>
     <section :class="[ns.bem('source')]" ref="sourceCodeArea">
       <div v-html="showSourceCode" class="language-vue"></div>
-      <div class="">隐藏源代码</div>
     </section>
+    <div v-if="!isCodeFold" :class="[ns.e('element-plus__container__bottom')]" @click="setCodeFold(true)">
+      <UpCode />
+      隐藏源代码
+    </div>
   </div>
 </template>
 
