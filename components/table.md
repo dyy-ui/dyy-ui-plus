@@ -5,8 +5,8 @@ url: /components/table.md
 
 ## 基础用法
 
-::: preview
-demo-preview=../demo/table/Basic.vue
+::: preview 基础用法 || 描述
+demo-preview=../demo/table/Basic.vue\
 :::
 
 ## 属性
