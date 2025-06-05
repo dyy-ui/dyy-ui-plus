@@ -28,7 +28,7 @@ console.log(builtinImportMap);
   const customImportMap = {
     imports: {
       "element-plus": "https://cdn.jsdelivr.net/npm/element-plus@latest/dist/index.full.min.mjs",
-      "dyy-ui-plus": "https://cdn.jsdelivr.net/npm/dyy-ui-plus@1.0.4/dist/es/index.js",
+      "dyy-ui-plus": "https://cdn.jsdelivr.net/npm/dyy-ui-plus@1.0.5/dist/full/dyy-ui-plus-full.js",
       "vue": "https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.js",
       "vue/server-renderer": "https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.js"
     },

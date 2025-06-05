@@ -24,11 +24,11 @@ export default defineConfig({
       entry: resolve(__dirname, "../index.ts"),
       name: "DyyUiPlus",
       fileName: "dyy-ui-plus-full",
-      formats: ["es"],
+      formats: ["es", "umd"],
     },
     rollupOptions: {
       // 不要 external，确保依赖都被打包进来
-      external: [],
+      external: ['vue'],
       output: {
         inlineDynamicImports: true, // 关闭代码分割
         entryFileNames: "dyy-ui-plus-full.js",
