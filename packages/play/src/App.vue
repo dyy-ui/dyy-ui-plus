@@ -1,9 +1,9 @@
 <script setup>
-  import { watchEffect, ref } from 'vue'
-  import { Repl, useStore, useVueImportMap } from '@vue/repl'
+  import { watchEffect, ref, computed } from 'vue'
+  import { Repl, useStore, useVueImportMap, mergeImportMap } from '@vue/repl'
   import Monaco from '@vue/repl/monaco-editor'
   import HelloWorld from './components/HelloWorld.vue?raw'
-  import Basic from '../../docs/demo/searchForm/Basic.vue?raw'
+  import Basic from '../../docs/demo/numberText/Basic.vue?raw'
   console.log(ref(Basic))
 
   // retrieve some configuration options from the URL
@@ -20,12 +20,27 @@
     runtimeDev: 'https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.js',
     runtimeProd: 'https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.prod.js',
     serverRenderer: 'https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.js',
+    
   })
+console.log(builtinImportMap);
+
+ // 自定义 importMap
+  const customImportMap = {
+    imports: {
+      "element-plus": "https://cdn.jsdelivr.net/npm/element-plus@latest/dist/index.full.min.mjs",
+      "dyy-ui-plus": "https://cdn.jsdelivr.net/npm/dyy-ui-plus@1.0.4/dist/es/index.js",
+      "vue": "https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.js",
+      "vue/server-renderer": "https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.js"
+    },
+  }
+let mergedImportMaps = ref()
+  // 计算合并后的 importMap，确保 builtinImportMap.value 有 imports 字段
+ mergedImportMaps.value = mergeImportMap(builtinImportMap.value,customImportMap)
 
   const store = useStore(
     {
       // pre-set import map
-      builtinImportMap: builtinImportMap,
+      builtinImportMap:mergedImportMaps,
       // starts on the output pane (mobile only) if the URL has a showOutput query
       showOutput: ref(query.has('showOutput')),
       // starts on a different tab on the output pane if the URL has a outputMode query
@@ -49,5 +64,5 @@
 </script>
 
 <template>
-  <Repl :store="store" :editor="Monaco" :showCompileOutput="true" :previewTheme="true" theme="dark" />
+  <Repl :store="store" :editor="Monaco" :showCompileOutput="true" :previewTheme="true"  />
 </template>

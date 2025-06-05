@@ -2,6 +2,7 @@
   import { ref, watch, watchEffect } from 'vue'
   import { ElMessage } from 'element-plus'
   import type { SearchFormItem } from 'dyy-ui-plus'
+  import { LxSearchForm } from 'dyy-ui-plus'
 
   const count = ref(0)
 
