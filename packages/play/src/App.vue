@@ -26,8 +26,10 @@
   // 自定义 importMap
   const customImportMap = {
     imports: {
-      'element-plus': 'https://unpkg.com/element-plus@latest/dist/index.full.min.mjs',
-      'dyy-ui-plus': 'https://unpkg.com/dyy-ui-plus@1.0.6/dist/full/dyy-ui-plus-full.js',
+      '@vue/shared': 'https://fastly.jsdelivr.net/npm/@vue/shared@latest/dist/shared.esm-bundler.js',
+      'element-plus': 'https://fastly.jsdelivr.net/npm/element-plus@latest/dist/index.full.min.mjs',
+      'element-plus/': 'https://fastly.jsdelivr.net/npm/element-plus@latest/',
+      'dyy-ui-plus': 'https://unpkg.com/dyy-ui-plus@1.0.7/dist/full/full.js',
     },
   }
   let mergedImportMaps = ref()
