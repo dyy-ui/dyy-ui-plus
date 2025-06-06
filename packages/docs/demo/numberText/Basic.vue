@@ -12,5 +12,6 @@
   </el-row>
 </template>
 <script setup>
-import { ref } from 'vue'
+  import { ElRow, ElCol } from 'element-plus'
+  import { LxNumberText } from 'dyy-ui-plus'
 </script>
