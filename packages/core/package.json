@@ -24,6 +24,8 @@
       "require": "./dist/"
     }
   },
+  "unpkg": "./dist/full/full.js",
+  "jsdelivr": "./dist/full/full.js",
   "scripts": {
     "build": "run-p build-es build-umd build-full",
     "build:watch": "run-p build-es:watch build-umd:watch",
