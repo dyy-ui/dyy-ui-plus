@@ -1,0 +1,1 @@
+import{_ as a,c as i,o as t,b2 as e}from"./chunks/framework.DahuTft5.js";const c=JSON.parse('{"title":"快速开始","description":"","frontmatter":{},"headers":[],"relativePath":"markdown.md","filePath":"markdown.md"}'),n={name:"markdown.md"};function l(p,s,h,d,k,r){return t(),i("div",null,s[0]||(s[0]=[e("",5)]))}const u=a(n,[["render",l]]);export{c as __pageData,u as default};
