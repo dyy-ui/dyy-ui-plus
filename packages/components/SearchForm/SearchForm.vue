@@ -14,6 +14,7 @@
         <!-- slot end -->
         <el-form-item v-if="item.type !== 'cascader'" :label="item.label" :prop="item.prop">
           <component
+            v-if="componentMap[item.type]"
             :is="componentMap[item.type]"
             v-model="form[item?.prop]"
             :type="item.attrs?.type as DateType"
@@ -139,6 +140,8 @@
   })
 
   onBeforeMount(() => {
+    console.log('1.0.8-0')
+    // 初始化form
     initForm()
   })
 
@@ -165,6 +168,7 @@
 
   defineExpose({
     form,
+    handleReset,
   })
 </script>
 <style scoped lang="scss">
