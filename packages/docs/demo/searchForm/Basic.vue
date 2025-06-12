@@ -77,12 +77,15 @@
       label: '年龄虚拟',
       prop: 'age1',
       type: 'selectV2',
-      attrs: { clearable: true, placeholder: '请输选择年龄虚拟' },
-      options: [
-        { label: '180岁', value: '18' },
-        { label: '190岁', value: '19' },
-        { label: '200岁', value: '20' },
-      ],
+      attrs: {
+        clearable: true,
+        placeholder: '请输选择年龄虚拟',
+        options: [
+          { label: '180岁', value: '18' },
+          { label: '190岁', value: '19' },
+          { label: '200岁', value: '20' },
+        ],
+      },
       value: '',
     },
     {

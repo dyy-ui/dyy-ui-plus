@@ -32,6 +32,17 @@
       'dyy-ui-plus': 'https://unpkg.com/dyy-ui-plus@1.0.7/dist/full/full.js',
     },
   }
+  const previewOptions = {
+    headHTML: `
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"><\/script>
+    <script>
+      window.__unocss = {
+        rules: [],
+        presets: [],
+      }
+    <\/script>
+  `,
+  }
   let mergedImportMaps = ref()
   // 计算合并后的 importMap，确保 builtinImportMap.value 有 imports 字段
   mergedImportMaps.value = mergeImportMap(builtinImportMap.value, customImportMap)
@@ -63,5 +74,11 @@
 </script>
 
 <template>
-  <Repl :store="store" :editor="Monaco" :showCompileOutput="true" :previewTheme="true" />
+  <Repl
+    :store="store"
+    :editor="Monaco"
+    :showCompileOutput="true"
+    :preview-options="previewOptions"
+    :previewTheme="true"
+  />
 </template>
