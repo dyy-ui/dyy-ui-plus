@@ -11,8 +11,29 @@
         <template v-if="item.slot">
           <slot :name="item.slot" :item="item"></slot>
         </template>
+        <el-form-item v-if="item.type === 'checkbox'" :label="item.label" :prop="item.prop">
+          <el-checkbox-group v-model="form[item?.prop]" v-bind="item.attrs as any" v-on="item.event">
+            <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option">
+              {{ option.label }}
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+        <el-form-item v-else-if="item.type === 'radio'" :label="item.label" :prop="item.prop">
+          <el-radio-group v-model="form[item?.prop]" v-bind="item.attrs as any" v-on="item.event">
+            <el-radio v-for="option in item.options" :key="option.value" v-bind="option">
+              {{ option.label }}
+            </el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item v-else-if="item.type === 'cascader'" :label="item.label" :prop="item.prop">
+          <el-cascader v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs as any" v-on="item.event">
+            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
+              <slot :name="slotItem" :item="item"></slot>
+            </template>
+          </el-cascader>
+        </el-form-item>
         <!-- slot end -->
-        <el-form-item v-if="item.type !== 'cascader'" :label="item.label" :prop="item.prop">
+        <el-form-item v-else :label="item.label" :prop="item.prop">
           <component
             v-if="componentMap[item.type]"
             :is="componentMap[item.type]"
@@ -34,21 +55,7 @@
                 :value="option.value"
               ></el-option>
             </template>
-            <template v-if="item.options && item.type === 'checkbox'">
-              <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option"></el-checkbox>
-            </template>
-            <template v-if="item.options && item.type === 'radio'">
-              <el-radio v-for="option in item.options" :key="option.value" v-bind="option"></el-radio>
-            </template>
           </component>
-        </el-form-item>
-        <!-- TODO  cascader 用上面的方法 node-content.ts renderLabelFn 会返回有值，导致label渲染不出来 -->
-        <el-form-item v-if="item.type === 'cascader'" :label="item.label" :prop="item.prop">
-          <el-cascader v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs as any" v-on="item.event">
-            <template v-for="slotItem in item.attrs?.slots" #[slotItem]>
-              <slot :name="slotItem" :item="item"></slot>
-            </template>
-          </el-cascader>
         </el-form-item>
       </el-col>
       <el-col :span="6" class="text-right m-l-a">
