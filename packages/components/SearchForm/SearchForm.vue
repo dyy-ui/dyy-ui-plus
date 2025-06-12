@@ -32,6 +32,16 @@
             </template>
           </el-cascader>
         </el-form-item>
+        <el-form-item v-else-if="item.type === 'select'" :label="item.label" :prop="item.prop">
+          <el-select v-model="form[item?.prop]" :options="item.options" v-bind="item.attrs as any" v-on="item.event">
+            <el-option
+              v-for="option in validOptions(item.options ?? [])"
+              :key="option.value"
+              :label="option.label"
+              :value="option.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <!-- slot end -->
         <el-form-item v-else :label="item.label" :prop="item.prop">
           <component
@@ -46,14 +56,6 @@
           >
             <template v-for="slotItem in item.attrs?.slots" #[slotItem] :key="slotItem">
               <slot :name="slotItem" :item="item"></slot>
-            </template>
-            <template v-if="item.options && item.type === 'select'">
-              <el-option
-                v-for="option in validOptions(item.options ?? [])"
-                :key="option.value"
-                :label="option.label"
-                :value="option.value"
-              ></el-option>
             </template>
           </component>
         </el-form-item>
