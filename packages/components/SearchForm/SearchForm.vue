@@ -13,14 +13,14 @@
         </template>
         <el-form-item v-if="item.type === 'checkbox'" :label="item.label" :prop="item.prop">
           <el-checkbox-group v-model="form[item?.prop]" v-bind="item.attrs as any" v-on="item.event">
-            <el-checkbox v-for="option in item.options" :key="option.value" v-bind="option">
+            <el-checkbox v-for="option in item.options" :key="option.value" :value="option.value" v-bind="option">
               {{ option.label }}
             </el-checkbox>
           </el-checkbox-group>
         </el-form-item>
         <el-form-item v-else-if="item.type === 'radio'" :label="item.label" :prop="item.prop">
           <el-radio-group v-model="form[item?.prop]" v-bind="item.attrs as any" v-on="item.event">
-            <el-radio v-for="option in item.options" :key="option.value" v-bind="option">
+            <el-radio v-for="option in item.options" :key="option.value" :value="option.value" v-bind="option">
               {{ option.label }}
             </el-radio>
           </el-radio-group>
