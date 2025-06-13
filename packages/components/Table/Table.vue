@@ -1,11 +1,10 @@
 <template>
   <el-table v-bind="tableAttrs" :data="tableData || data" v-on="tableEvents">
-    <TableColumn v-for="col in columns" :key="col.prop || col.label" :column="col">
-      <!-- 透传所有自定义slot -->
-      <template v-for="(_, name) in slots" #[name]="scope">
-        <slot :name="name" v-bind="scope" />
+    <table-column :columns="columns">
+      <template v-for="item in Object.keys(slots)" #[item]="scope">
+        <slot :name="item" v-bind="{ ...scope }"></slot>
       </template>
-    </TableColumn>
+    </table-column>
   </el-table>
 </template>
 <script setup lang="ts">
