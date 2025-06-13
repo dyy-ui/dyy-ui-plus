@@ -4,10 +4,12 @@
   import CodeClose from '../../icons/code-close.vue'
   import CodeCopy from '../../icons/code-copy.vue'
   import UpCode from '../../icons/code-up.vue'
+  import CodeLine from '../../icons/code-line.vue'
   import { useNameSpace } from '../../hooks/use-namespaces'
   import { useCodeFold } from '../../hooks/use-codefold'
   import { useCodeCopy } from '../../hooks/use-codecopy'
   import { MessageNoticeService } from '../../messages/index'
+  import { usePlayground } from '../../hooks/use-palyground'
 
   interface DemoBlockProps {
     code: string
@@ -42,6 +44,13 @@
     if (isCodeFold.value) sourceCodeArea.value.style.height = '0px'
     else sourceCodeArea.value.style.height = `${value}px`
   }
+
+  const goCodeEdit = () => {
+    // 打开浏览器新标签，并且跳转到playground编辑页面地址为http://localhost:5173/
+    const { link } = usePlayground(props.code)
+    window.open(link)
+  }
+
   onMounted(() => {
     console.log(props)
 
@@ -65,6 +74,7 @@
     <section :class="[ns.bem('description')]">
       <div :class="[ns.bem('description', 'split-line')]"></div>
       <div :class="[ns.bem('description', 'handle-btn')]">
+        <CodeLine @click="goCodeEdit" />
         <CodeClose v-if="!isCodeFold" @click="setCodeFold(true)" />
         <CodeOpen v-else @click="setCodeFold(false)" />
         <CodeCopy @click="clickCodeCopy" />

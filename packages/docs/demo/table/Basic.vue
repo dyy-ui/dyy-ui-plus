@@ -14,6 +14,7 @@
 </template>
 <script setup>
   import { ref } from 'vue'
+  import { LxTable } from 'dyy-ui-plus'
   const columns = ref([
     { type: 'selection', width: 50, align: 'center', fixed: 'left' },
     { type: 'index', label: '序号', width: 180, align: 'center' },
