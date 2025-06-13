@@ -1,26 +1,53 @@
-<!-- 递归这个组件 -->
-<template>
-  <el-table-column v-for="item in columns" v-bind="item" :key="item.prop || item.label">
-    <template v-if="item.headerSlot" #header="scope">
-      <slot :name="item.headerSlot" v-bind="{ ...scope, item }"></slot>
-    </template>
-    <template v-if="item.slot" #default="scope">
-      <slot :name="item.slot" v-bind="{ ...scope, item }"></slot>
-    </template>
-    <template v-if="item.children && item.children.length">
-      <table-column v-if="item.children && item.children.length" :columns="item.children">
-        <template v-for="temp in item.children" #[temp.slot]="scope " :key="temp.slot">
-          <slot v-if="temp.slot" :name="temp.slot" v-bind="{ ...scope, temp }"></slot>
-        </template>
-      </table-column>
-    </template>
-  </el-table-column>
-</template>
 <script setup lang="ts">
-import { defineProps, withDefaults } from 'vue'
-import type { DTableColumnsProps } from './types.ts'
+  import { defineProps, useSlots } from 'vue'
 
-withDefaults(defineProps<Partial<DTableColumnsProps>>(), {
-  columns: () => [],
-})
+  const props = defineProps<{
+    column: any
+  }>()
+
+  const slots = useSlots()
+  function omitChildrenAndSlots(col: any) {
+    const { children, slots, ...rest } = col
+    return rest
+  }
+
+  function getColumnSlots(col: any, parentSlots: any) {
+    // 支持 columns 配置里的 slots: { default: 'mySlot', header: 'headerSlot' }
+    const slotObj: Record<string, any> = {}
+    if (col.slots) {
+      Object.keys(col.slots).forEach((slotName) => {
+        const parentSlotName = col.slots[slotName]
+        if (parentSlots[parentSlotName]) {
+          slotObj[slotName] = parentSlots[parentSlotName]
+        }
+      })
+    }
+    return slotObj
+  }
+</script>
+
+<template>
+  <component
+    :is="'el-table-column'"
+    v-bind="omitChildrenAndSlots(props.column)"
+    v-slots="getColumnSlots(props.column, slots)"
+  >
+    <!-- 递归渲染子列 -->
+    <template v-if="props.column.children" #default="scope">
+      <TableColumn
+        v-for="child in props.column.children"
+        :key="child.prop || child.label"
+        :column="child"
+        v-slots="slots"
+        v-bind="scope"
+      />
+    </template>
+  </component>
+</template>
+
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  export default defineComponent({
+    name: 'TableColumn',
+  })
 </script>
