@@ -13,7 +13,7 @@
     "build-components": "cross-env NODE_ENV=production pnpm --filter dyy-ui-plus build",
     "build-hooks": "cross-env NODE_ENV=production pnpm --filter @dyy-ui-plus/hooks build",
     "build:dev": "run-s build-hooks:dev build-components:dev",
-    "build-components:dev": "cross-env NODE_ENV=development pnpm --filter dyy-ui-plus build:watch",
+    "components:dev": "cross-env NODE_ENV=development pnpm --filter dyy-ui-plus build:watch",
     "build-hooks:dev": "cross-env NODE_ENV=development pnpm --filter @dyy-ui-plus/hooks build",
     "release": "pnpm --filter dyy-ui-plus release"
   },
